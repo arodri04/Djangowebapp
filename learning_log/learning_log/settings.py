@@ -137,21 +137,11 @@ BOOTSTRAP3 = {
 }
 
 #heroku settings
-if os.getcwd() == '/app':
-    import dj_database_url
-    DATABASES = {
-        'default': dj_database_url.config(default='postgres://localhost')
-    }
+import django_heroku
+django_heroku.settings(locals())
 
-    #honor the x forwarded proto header for request.is_secure()
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+if os.environ.get('DEBUG') == 'TRUE':
+    DEBUG = True
+elif os.environ.get('DEBUG') == 'FALSE':
+    DEBUG = False
 
-    #allow all host headers
-    ALLOWED_HOSTS = ['*']
-
-    #Static asset config
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    STATIC_ROOT = 'staticfiles'
-    STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, 'static'),
-    )
