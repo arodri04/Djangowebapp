@@ -1,5 +1,5 @@
-This is the Learning Logs project for ICT 362.
-Start this project with 
+This is the Learning Logs project for ICT 362. \n
+Start this project with \n
 'git clone https://github.com/arodri04/Djangowebapp.git'
 'cd Djangowebapp'
 'pip install -r requirements.txt'
